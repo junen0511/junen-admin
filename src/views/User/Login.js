@@ -46,6 +46,10 @@ export default class LoginPage extends Component {
                 {LoginModel => (
                     <div className={styles.main}>
                         <Login onSubmit={(err, values) => this.handleSubmit(err, values, LoginModel)}>
+                            {LoginModel.state.status === false &&
+                                LoginModel.state.type === 'account' &&
+                                !loading &&
+                                this.renderMessage(LoginModel.state.message)}
                             <UserName name="email" placeholder="用户名" />
                             <Password name="password" placeholder="密码" />
                             <div>
