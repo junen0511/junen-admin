@@ -9,10 +9,11 @@ module.exports = function override(config, env) {
         javascriptEnabled: true
     })(config, env);
 
-    config.resolve.alias = {
-        ...config.resolve.alias,
-        '@src': path.resolve(__dirname, 'src/'),
-        components: path.resolve(__dirname, 'src/components/')
+    config.resolve = {
+        alias: {
+            '@src': path.resolve(__dirname, 'src/'),
+            components: path.resolve(__dirname, 'src/components/')
+        }
     };
 
     return config;

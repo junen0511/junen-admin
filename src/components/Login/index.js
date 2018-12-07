@@ -30,10 +30,8 @@ class Login extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const { active, type } = this.state;
         const { form, onSubmit } = this.props;
-        const activeFileds = active[type];
-        form.validateFields(activeFileds, { force: true }, (err, values) => {
+        form.validateFields( { force: true }, (err, values) => {
             onSubmit(err, values);
         });
     };
