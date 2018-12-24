@@ -81,22 +81,22 @@ export const getRouterData = () => {
             component: dynamicWrapper(() => import('../layouts/BasicLayout'))
         },
         '/dashboard/workplace': {
-            component: dynamicWrapper(() => import('../views/Dashboard/index'))
+            component: dynamicWrapper(() => import('../pages/Dashboard/index'))
         },
         '/exception/403': {
-            component: dynamicWrapper(() => import('../views/Exception/403'))
+            component: dynamicWrapper(() => import('../pages/Exception/403'))
         },
         '/exception/404': {
-            component: dynamicWrapper(() => import('../views/Exception/404'))
+            component: dynamicWrapper(() => import('../pages/Exception/404'))
         },
         '/exception/500': {
-            component: dynamicWrapper(() => import('../views/Exception/500'))
+            component: dynamicWrapper(() => import('../pages/Exception/500'))
         },
         '/user': {
             component: dynamicWrapper(() => import('../layouts/UserLayout'))
         },
         '/user/login': {
-            component: dynamicWrapper(() => import('../views/User/Login'))
+            component: dynamicWrapper(() => import('../pages/User'))
         }
     };
     // Get name from ./menu.js or just set it in the router data.

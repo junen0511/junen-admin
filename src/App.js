@@ -1,9 +1,10 @@
 import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
-import history from './history';
-import { Provider } from 'unstated';
+import { Provider } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 import { LocaleProvider } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
+import Store, { history } from './Store';
 import { getRouterData } from './common/router';
 import Authorized from './utils/Authorized';
 import { getQueryPath } from './utils/utils';
@@ -17,9 +18,9 @@ class App extends React.Component {
         const BasicLayout = routerData['/'].component;
 
         return (
-            <Provider>
+            <Provider store={Store}>
                 <LocaleProvider locale={zhCN}>
-                    <Router history={history}>
+                    <ConnectedRouter history={history}>
                         <Switch>
                             <Route path="/user" render={props => <UserLayout {...props} routerData={routerData} />} />
                             <AuthorizedRoute
@@ -31,7 +32,7 @@ class App extends React.Component {
                                 })}
                             />
                         </Switch>
-                    </Router>
+                    </ConnectedRouter>
                 </LocaleProvider>
             </Provider>
         );

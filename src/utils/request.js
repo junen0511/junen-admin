@@ -1,6 +1,7 @@
 import axios from 'axios';
-import history from '@src/history';
 import { getToken, setToken } from './authority';
+import store from '../Store';
+import { push } from 'react-router-redux';
 
 const service = axios.create({
     baseURL: '/api',
@@ -24,13 +25,13 @@ service.interceptors.response.use(
         const { status } = error.response;
         if (status === 401) {
             setToken('');
-            history.push('/user/login');
+            store.dispatch(push('/user/login'));
         }
         if (status === 403) {
-            history.push('/exception/403');
+            store.dispatch(push('/exception/403'));
         }
         if (status <= 504 && status >= 500) {
-            history.push('/exception/500');
+            store.dispatch(push('/exception/500'));
         }
         return Promise.reject(error);
     }

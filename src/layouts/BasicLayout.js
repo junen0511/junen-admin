@@ -10,7 +10,7 @@ import { enquireScreen, unenquireScreen } from 'enquire-js';
 import GlobalHeader from 'components/GlobalHeader';
 import GlobalFooter from 'components/GlobalFooter';
 import SiderMenu from 'components/SiderMenu';
-import NotFound from '@src/views/Exception/404';
+import NotFound from '@src/pages/Exception/404';
 import { getRoutes } from '@src/utils/utils';
 import Authorized from '@src/utils/Authorized';
 import { getMenuData } from '@src/common/menu';
