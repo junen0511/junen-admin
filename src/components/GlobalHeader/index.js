@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Menu, Icon, Dropdown, Avatar } from 'antd';
+import Debounce from 'lodash-decorators/debounce';
 import styles from './index.module.less';
 
 export default class GlobalHeader extends PureComponent {
@@ -12,6 +13,13 @@ export default class GlobalHeader extends PureComponent {
         onCollapse(!collapsed);
         this.triggerResizeEvent();
     };
+    /* eslint-disable*/
+    @Debounce(600)
+    triggerResizeEvent() {
+        const event = document.createEvent('HTMLEvents');
+        event.initEvent('resize', true, false);
+        window.dispatchEvent(event);
+    }
 
     render() {
         const { currentUser = {}, collapsed, onMenuClick } = this.props;

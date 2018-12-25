@@ -1,16 +1,11 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
-import { reducer as loginReducer } from './pages/User';
+import createRootReducer from './reducers';
 
 const win = window;
 const history = createBrowserHistory();
-
-const reducer = combineReducers({
-    router: connectRouter(history),
-    login: loginReducer
-});
 
 const historyMiddleware = routerMiddleware(history);
 
@@ -24,7 +19,7 @@ const storeEnhancers = compose(
     win && win.devToolsExtension ? win.devToolsExtension() : f => f
 );
 
-const store = createStore(reducer, {}, storeEnhancers);
+const store = createStore(createRootReducer(history), {}, storeEnhancers);
 
 export { history };
 export default store;

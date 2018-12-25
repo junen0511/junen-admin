@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Layout, Icon } from 'antd';
 import DocumentTitle from 'react-document-title';
+import { connect } from 'react-redux';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
@@ -15,6 +16,7 @@ import { getRoutes } from '@src/utils/utils';
 import Authorized from '@src/utils/Authorized';
 import { getMenuData } from '@src/common/menu';
 import logo from '@src/assets/logo.svg';
+import { updateLayoutCollapsed } from './actions';
 
 const { Content, Header, Footer } = Layout;
 const { AuthorizedRoute, check } = Authorized;
@@ -80,7 +82,7 @@ enquireScreen(b => {
     isMobile = b;
 });
 
-export default class BasicLayout extends React.PureComponent {
+class BasicLayout extends React.PureComponent {
     static childContextTypes = {
         location: PropTypes.object,
         breadcrumbNameMap: PropTypes.object
@@ -145,12 +147,15 @@ export default class BasicLayout extends React.PureComponent {
         return redirect;
     };
 
-    handleMenuCollapse = collapsed => {};
+    handleMenuCollapse = collapsed => {
+        const { changeLayoutCollapsed } = this.props;
+        changeLayoutCollapsed({ collapsed });
+    };
 
     handleMenuClick = ({ key }) => {};
 
     render() {
-        const { routerData, location, match } = this.props;
+        const { collapsed, routerData, location, match } = this.props;
         const { isMobile: mb } = this.state;
         const baseRedirect = this.getBaseRedirect();
         const layout = (
@@ -160,6 +165,7 @@ export default class BasicLayout extends React.PureComponent {
                     menuData={getMenuData()}
                     location={location}
                     isMobile={mb}
+                    collapsed={collapsed}
                     onCollapse={this.handleMenuCollapse}
                 />
                 <Layout>
@@ -167,6 +173,7 @@ export default class BasicLayout extends React.PureComponent {
                         <GlobalHeader
                             logo={logo}
                             isMobile={mb}
+                            collapsed={collapsed}
                             onCollapse={this.handleMenuCollapse}
                             onMenuClick={this.handleMenuClick}
                         />
@@ -221,3 +228,18 @@ export default class BasicLayout extends React.PureComponent {
         );
     }
 }
+
+const mapStateToProps = state => ({
+    collapsed: state.global.collapsed
+});
+
+const mapDispatchToProps = dispatch => ({
+    changeLayoutCollapsed: payload => {
+        dispatch(updateLayoutCollapsed(payload));
+    }
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(BasicLayout);

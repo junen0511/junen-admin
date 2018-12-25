@@ -9,6 +9,7 @@
     "connected-react-router": "^6.0.0",
     "enquire-js": "^0.2.1",
     "history": "^4.7.2",
+    "lodash-decorators": "^6.0.1",
     "numeral": "^2.0.6",
     "path-to-regexp": "^2.4.0",
     "prop-types": "^15.6.2",
@@ -42,6 +43,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.2.3",
     "babel-plugin-import": "^1.11.0",
     "react-app-rewire-less-modules": "^1.3.0",
     "react-app-rewired": "^1.6.2",

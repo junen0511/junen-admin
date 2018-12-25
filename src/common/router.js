@@ -14,7 +14,7 @@ const getRouterDataCache = () => {
 };
 
 // wrapper of dynamic
-const dynamicWrapper = component => {
+const dynamicWrapper = (component, key) => {
     // () => require('module')
     // transformed by babel-plugin-dynamic-import-node-sync
     if (component.toString().indexOf('.then(') < 0) {

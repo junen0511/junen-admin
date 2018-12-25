@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getToken, setToken } from './authority';
-import store from '../Store';
-import { push } from 'react-router-redux';
+import store from '../store';
+import { push } from 'connected-react-router';
 
 const service = axios.create({
     baseURL: '/api',

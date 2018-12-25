@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { LocaleProvider } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
-import Store, { history } from './Store';
+import store, { history } from './store';
 import { getRouterData } from './common/router';
 import Authorized from './utils/Authorized';
 import { getQueryPath } from './utils/utils';
@@ -18,7 +18,7 @@ class App extends React.Component {
         const BasicLayout = routerData['/'].component;
 
         return (
-            <Provider store={Store}>
+            <Provider store={store}>
                 <LocaleProvider locale={zhCN}>
                     <ConnectedRouter history={history}>
                         <Switch>

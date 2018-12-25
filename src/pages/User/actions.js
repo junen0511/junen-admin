@@ -29,8 +29,8 @@ export const login = payload => {
                         window.location.href = redirect;
                         return;
                     }
-                    dispatch(replace(redirect || '/'));
                 }
+                dispatch(replace(redirect || '/'));
             }
         } catch (error) {
             dispatch(loginError(error));
