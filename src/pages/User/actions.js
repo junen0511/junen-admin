@@ -5,7 +5,7 @@ import { setAuthority, setToken } from '@src/utils/authority';
 import { reloadAuthorized } from '@src/utils/Authorized';
 import { getPageQuery } from '@src/utils/utils';
 
-import { LOGIN_USER, LOGOUT_USER } from './actionTypes';
+import { LOGIN_USER } from './actionTypes';
 
 export const login = payload => {
     return async dispatch => {
@@ -35,14 +35,6 @@ export const login = payload => {
         } catch (error) {
             dispatch(loginError(error));
         }
-    };
-};
-
-export const logout = () => {
-    reloadAuthorized();
-    return {
-        type: LOGOUT_USER,
-        payload: { status: false, token: '' }
     };
 };
 

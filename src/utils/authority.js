@@ -2,7 +2,7 @@ const authorityKey = 'authority';
 const tokenKey = 'token';
 
 export function getAuthority() {
-    return localStorage.getItem(authorityKey) || 'admin';
+    return localStorage.getItem(authorityKey);
 }
 
 export function setAuthority(authority) {

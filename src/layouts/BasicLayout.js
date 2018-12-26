@@ -16,7 +16,7 @@ import { getRoutes } from '@src/utils/utils';
 import Authorized from '@src/utils/Authorized';
 import { getMenuData } from '@src/common/menu';
 import logo from '@src/assets/logo.svg';
-import { updateLayoutCollapsed } from './actions';
+import { updateLayoutCollapsed, fetchUserInfo, logout } from './actions';
 
 const { Content, Header, Footer } = Layout;
 const { AuthorizedRoute, check } = Authorized;
@@ -106,6 +106,8 @@ class BasicLayout extends React.PureComponent {
                 isMobile: mobile
             });
         });
+        const { getUserInfo } = this.props;
+        getUserInfo();
     }
 
     componentWillUnmount() {
@@ -152,10 +154,15 @@ class BasicLayout extends React.PureComponent {
         changeLayoutCollapsed({ collapsed });
     };
 
-    handleMenuClick = ({ key }) => {};
+    handleMenuClick = ({ key }) => {
+        const { logoutUser } = this.props;
+        if (key === 'logout') {
+            logoutUser();
+        }
+    };
 
     render() {
-        const { collapsed, routerData, location, match } = this.props;
+        const { collapsed, currentUser, routerData, location, match } = this.props;
         const { isMobile: mb } = this.state;
         const baseRedirect = this.getBaseRedirect();
         const layout = (
@@ -172,6 +179,7 @@ class BasicLayout extends React.PureComponent {
                     <Header style={{ padding: 0 }}>
                         <GlobalHeader
                             logo={logo}
+                            currentUser={currentUser}
                             isMobile={mb}
                             collapsed={collapsed}
                             onCollapse={this.handleMenuCollapse}
@@ -230,12 +238,18 @@ class BasicLayout extends React.PureComponent {
 }
 
 const mapStateToProps = state => ({
-    collapsed: state.global.collapsed
+    ...state.global
 });
 
 const mapDispatchToProps = dispatch => ({
     changeLayoutCollapsed: payload => {
         dispatch(updateLayoutCollapsed(payload));
+    },
+    getUserInfo: () => {
+        dispatch(fetchUserInfo());
+    },
+    logoutUser: () => {
+        dispatch(logout());
     }
 });
 

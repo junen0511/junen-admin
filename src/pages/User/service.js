@@ -10,15 +10,6 @@ export async function signInApi(data) {
     return response.data;
 }
 
-export async function queryCurrent() {
-    const response = await request({
-        url: '/user/current',
-        method: 'get'
-    });
-
-    return response.data;
-}
-
 export async function signUpApi(data) {
     const response = await request({
         url: '/user/signUp',

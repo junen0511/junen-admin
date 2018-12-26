@@ -22,10 +22,10 @@ class App extends React.Component {
                 <LocaleProvider locale={zhCN}>
                     <ConnectedRouter history={history}>
                         <Switch>
-                            <Route path="/user" render={props => <UserLayout {...props} routerData={routerData} />} />
+                            <Route path="/user" component={UserLayout} />
                             <AuthorizedRoute
                                 path="/"
-                                render={props => <BasicLayout {...props} routerData={routerData} />}
+                                render={props => <BasicLayout {...props} />}
                                 authority={['admin', 'user']}
                                 redirectPath={getQueryPath('/user/login', {
                                     redirect: window.location.href

@@ -33,10 +33,6 @@ export default class GlobalHeader extends PureComponent {
                     <Icon type="setting" />
                     设置
                 </Menu.Item>
-                <Menu.Item key="triggerError">
-                    <Icon type="close-circle" />
-                    触发报错
-                </Menu.Item>
                 <Menu.Divider />
                 <Menu.Item key="logout">
                     <Icon type="logout" />
