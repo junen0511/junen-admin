@@ -117,7 +117,7 @@ class BasicLayout extends React.PureComponent {
     getPageTitle() {
         const { routerData, location } = this.props;
         const { pathname } = location;
-        let title = 'Junen CMS';
+        let title = 'Junen Blog';
         let currRouterData = null;
         // match params path
         for (const key in routerData) {
@@ -127,7 +127,7 @@ class BasicLayout extends React.PureComponent {
             }
         }
         if (currRouterData && currRouterData.name) {
-            title = `${currRouterData.name} - Junen CMS`;
+            title = `${currRouterData.name} - Junen Blog`;
         }
         return title;
     }

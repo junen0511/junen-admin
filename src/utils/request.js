@@ -5,7 +5,7 @@ import { push } from 'connected-react-router';
 
 const service = axios.create({
     baseURL: '/api',
-    timeout: 10000
+    timeout: 80000
 });
 
 service.interceptors.request.use(
