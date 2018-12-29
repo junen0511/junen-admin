@@ -106,8 +106,8 @@ class BasicLayout extends React.PureComponent {
                 isMobile: mobile
             });
         });
-        const { getUserInfo } = this.props;
-        getUserInfo();
+        const { dispatch } = this.props;
+        dispatch(fetchUserInfo());
     }
 
     componentWillUnmount() {
@@ -150,14 +150,14 @@ class BasicLayout extends React.PureComponent {
     };
 
     handleMenuCollapse = collapsed => {
-        const { changeLayoutCollapsed } = this.props;
-        changeLayoutCollapsed({ collapsed });
+        const { dispatch } = this.props;
+        dispatch(updateLayoutCollapsed({ collapsed }));
     };
 
     handleMenuClick = ({ key }) => {
-        const { logoutUser } = this.props;
+        const { dispatch } = this.props;
         if (key === 'logout') {
-            logoutUser();
+            dispatch(logout());
         }
     };
 
@@ -241,17 +241,7 @@ const mapStateToProps = state => ({
     ...state.global
 });
 
-const mapDispatchToProps = dispatch => ({
-    changeLayoutCollapsed: payload => {
-        dispatch(updateLayoutCollapsed(payload));
-    },
-    getUserInfo: () => {
-        dispatch(fetchUserInfo());
-    },
-    logoutUser: () => {
-        dispatch(logout());
-    }
-});
+const mapDispatchToProps = dispatch => ({ dispatch });
 
 export default connect(
     mapStateToProps,

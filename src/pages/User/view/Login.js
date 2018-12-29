@@ -20,12 +20,14 @@ class LoginPage extends Component {
 
     handleSubmit = (err, values) => {
         const { type } = this.state;
-        const { onSubmit } = this.props;
+        const { dispatch } = this.props;
         if (!err) {
-            onSubmit({
-                ...values,
-                type
-            });
+            dispatch(
+                login({
+                    ...values,
+                    type
+                })
+            );
         }
     };
 
@@ -78,11 +80,7 @@ const mapStateToProps = state => ({
     login: state.login
 });
 
-const mapDispatchToProps = dispatch => ({
-    onSubmit: payload => {
-        dispatch(login(payload));
-    }
-});
+const mapDispatchToProps = dispatch => ({ dispatch });
 
 export default connect(
     mapStateToProps,
