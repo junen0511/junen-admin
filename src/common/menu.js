@@ -11,6 +11,17 @@ const menuData = [
                 path: 'workplace'
             }
         ]
+    },
+    {
+        name: '栏目管理',
+        icon: 'profile',
+        path: 'column',
+        children: [
+            {
+                name: '栏目列表',
+                path: 'list'
+            }
+        ]
     }
 ];
 

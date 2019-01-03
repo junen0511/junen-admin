@@ -1,6 +1,6 @@
 import { message } from 'antd';
-import { fetchColumnList, fetchColumnInfo, updateColumn, deleteColumn } from './service';
-import { DEL_COLUMN, GET_COLUMN_INFO, GET_COLUMN_LIST } from './actionTypes';
+import { fetchColumnList, createColumn, updateColumn, deleteColumn } from './service';
+import { GET_COLUMN_LIST, EDIT_INITIAL_COLUMN, DEL_COLUMN } from './actionTypes';
 
 export const getColumnList = payload => {
     return async dispatch => {
@@ -12,43 +12,46 @@ export const getColumnList = payload => {
                     payload: data
                 });
             }
-        } catch (error) {}
-    };
-};
-
-export const getColumnInfo = payload => {
-    return async dispatch => {
-        const { status, data } = await fetchColumnInfo(payload);
-        if (status) {
-            dispatch({
-                type: GET_COLUMN_INFO,
-                payload: data
-            });
+        } catch (error) {
+            throw new Error(error);
         }
-        try {
-        } catch (error) {}
     };
 };
 
 export const addColumn = payload => {
-    return async () => {
+    return async dispatch => {
         try {
-            const { status } = await updateColumn(payload);
+            const { status, message: result } = await createColumn(payload);
             if (status) {
                 message.success('提交成功');
+            } else {
+                message.error(result);
             }
-        } catch (error) {}
+        } catch (error) {
+            throw new Error(error);
+        }
     };
 };
 
 export const editColumn = payload => {
-    return async () => {
+    return async dispatch => {
         try {
-            const { status } = await updateColumn(payload);
+            const { status, message: result } = await updateColumn(payload);
             if (status) {
                 message.success('编辑成功');
+            } else {
+                message.success(result);
             }
-        } catch (error) {}
+        } catch (error) {
+            throw new Error(error);
+        }
+    };
+};
+
+export const editInitialColumn = payload => {
+    return {
+        type: EDIT_INITIAL_COLUMN,
+        payload
     };
 };
 
@@ -62,6 +65,8 @@ export const delColumn = payload => {
                     payload
                 });
             }
-        } catch (error) {}
+        } catch (error) {
+            throw new Error(error);
+        }
     };
 };

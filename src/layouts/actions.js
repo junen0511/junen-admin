@@ -14,7 +14,7 @@ export const fetchUserInfo = () => {
             const { data } = await queryCurrent();
             dispatch(setUserInfo(data));
         } catch (error) {
-            throw new Error('Failed to fetch user information');
+            throw new Error(error);
         }
     };
 };

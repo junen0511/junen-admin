@@ -1,11 +1,19 @@
-import { ADD_COLUMN, EDIT_COLUMN, DEL_COLUMN, GET_COLUMN_INFO, GET_COLUMN_LIST } from './actionTypes';
+import { GET_COLUMN_LIST, EDIT_INITIAL_COLUMN, DEL_COLUMN } from './actionTypes';
 
-export default (state = {}, action) => {
+const initialState = {
+    columnList: [],
+    currentItem: {}
+};
+
+export default (state = initialState, action) => {
     const { payload, type } = action;
-
     switch (type) {
-        case ADD_COLUMN:
-            return { ...state, ...payload };
+        case GET_COLUMN_LIST:
+            return { ...state, columnList: payload };
+        case EDIT_INITIAL_COLUMN:
+            return { ...state, currentItem: payload };
+        case DEL_COLUMN:
+            return { ...state, columnList: state.columnList.filter(item => item.id !== payload.id) };
         default:
             return state;
     }

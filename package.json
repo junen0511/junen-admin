@@ -32,7 +32,7 @@
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject"
   },
-  "proxy": "http://118.24.24.110:3001/",
+  "proxy": "http://api.annajunen.top/",
   "eslintConfig": {
     "extends": "react-app"
   },

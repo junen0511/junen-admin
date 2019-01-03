@@ -83,6 +83,9 @@ export const getRouterData = () => {
         '/dashboard/workplace': {
             component: dynamicWrapper(() => import('../pages/Dashboard/index'))
         },
+        '/column/list': {
+            component: dynamicWrapper(() => import('../pages/Column/index'))
+        },
         '/exception/403': {
             component: dynamicWrapper(() => import('../pages/Exception/403'))
         },
