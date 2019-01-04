@@ -16,7 +16,7 @@ import { getRoutes } from '@src/utils/utils';
 import Authorized from '@src/utils/Authorized';
 import { getMenuData } from '@src/common/menu';
 import logo from '@src/assets/logo.svg';
-import { updateLayoutCollapsed, fetchUserInfo, logout } from './actions';
+import { updateLayoutCollapsed, fetchUserInfo, logout } from '../global/actions';
 
 const { Content, Header, Footer } = Layout;
 const { AuthorizedRoute, check } = Authorized;
