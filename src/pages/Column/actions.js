@@ -19,7 +19,7 @@ export const getColumnList = payload => {
 };
 
 export const addColumn = payload => {
-    return async dispatch => {
+    return async () => {
         try {
             const { status, message: result } = await createColumn(payload);
             if (status) {
@@ -34,7 +34,7 @@ export const addColumn = payload => {
 };
 
 export const editColumn = payload => {
-    return async dispatch => {
+    return async () => {
         try {
             const { status, message: result } = await updateColumn(payload);
             if (status) {

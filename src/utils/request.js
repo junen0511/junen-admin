@@ -25,7 +25,6 @@ service.interceptors.response.use(
         const { status } = error.response;
         if (status === 401) {
             setToken('');
-            console.log('request', status);
             store.dispatch(push('/user/login'));
         }
         if (status === 403) {

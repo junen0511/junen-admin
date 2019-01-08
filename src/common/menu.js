@@ -22,6 +22,22 @@ const menuData = [
                 path: 'list'
             }
         ]
+    },
+    {
+        name: '文章管理',
+        icon: 'file-text',
+        path: 'article',
+        children: [
+            {
+                name: '文章列表',
+                path: 'list'
+            },
+            {
+                name: '添加文章',
+                path: 'add',
+                hideInMenu: true
+            }
+        ]
     }
 ];
 

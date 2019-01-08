@@ -19,6 +19,7 @@ const dynamicWrapper = (component, key) => {
     // transformed by babel-plugin-dynamic-import-node-sync
     if (component.toString().indexOf('.then(') < 0) {
         return props => {
+            console.log('string', component());
             return createElement(component().default, {
                 ...props,
                 routerData: getRouterDataCache()
@@ -84,7 +85,13 @@ export const getRouterData = () => {
             component: dynamicWrapper(() => import('../pages/Dashboard/index'))
         },
         '/column/list': {
-            component: dynamicWrapper(() => import('../pages/Column/index'))
+            component: dynamicWrapper(() => import('../pages/Column'))
+        },
+        '/article/list': {
+            component: dynamicWrapper(() => import('../pages/Article'))
+        },
+        '/article/add': {
+            component: dynamicWrapper(() => import('../pages/Article/view/addArticle'))
         },
         '/exception/403': {
             component: dynamicWrapper(() => import('../pages/Exception/403'))

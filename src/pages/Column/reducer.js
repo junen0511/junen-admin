@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
         case EDIT_INITIAL_COLUMN:
             return { ...state, currentItem: payload };
         case DEL_COLUMN:
-            return { ...state, columnList: state.columnList.filter(item => item.id !== payload.id) };
+            return { ...state, columnList: state.columnList.filter(({ id }) => id !== payload.id) };
         default:
             return state;
     }

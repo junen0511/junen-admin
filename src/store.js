@@ -4,7 +4,6 @@ import { routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import createRootReducer from './reducers';
 
-const win = window;
 const history = createBrowserHistory();
 
 const historyMiddleware = routerMiddleware(history);
@@ -16,7 +15,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const storeEnhancers = compose(
     applyMiddleware(...middlewares),
-    win && win.devToolsExtension ? win.devToolsExtension() : f => f
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
 );
 
 const store = createStore(createRootReducer(history), {}, storeEnhancers);

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import { Card, Table, Divider, Button, Popconfirm } from 'antd';
 import { getColumnList, addColumn, editInitialColumn, editColumn, delColumn } from '../actions';
+import PageHeaderLayout from '@src/layouts/PageHeaderLayout';
 import AddModalForm from './AddModalForm';
 import EditModalForm from './EditModalForm';
 import styles from './columnList.module.less';
@@ -124,13 +125,15 @@ class ColumnList extends PureComponent {
         };
 
         return (
-            <div className={styles.tableContent}>
-                <Card title="栏目列表" extra={extraContent} bordered={false}>
-                    <Table columns={tableColumns} dataSource={renderColumnList} />
-                </Card>
-                {addModalVisible && <AddModalForm {...addModalProps} />}
-                {editModalVisible && <EditModalForm {...editModalProps} />}
-            </div>
+            <PageHeaderLayout>
+                <div className={styles.tableContent}>
+                    <Card title="栏目列表" extra={extraContent} bordered={false}>
+                        <Table columns={tableColumns} dataSource={renderColumnList} />
+                    </Card>
+                    {addModalVisible && <AddModalForm {...addModalProps} />}
+                    {editModalVisible && <EditModalForm {...editModalProps} />}
+                </div>
+            </PageHeaderLayout>
         );
     }
 }
