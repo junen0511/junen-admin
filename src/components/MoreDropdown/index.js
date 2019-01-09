@@ -5,15 +5,15 @@ import { Dropdown, Menu, Icon } from 'antd';
 const MoreDropdown = ({ onMenuClick, menuOptions = [] }) => {
     const menu = menuOptions.map(({ key, label }) => (
         <Menu.Item key={key}>
-            <a href="#/">{label}</a>
+            <span className="link-btn">{label}</span>
         </Menu.Item>
     ));
 
     return (
         <Dropdown overlay={<Menu onClick={onMenuClick}>{menu}</Menu>}>
-            <a href="#/">
+            <span className="link-btn">
                 更多 <Icon type="down" />
-            </a>
+            </span>
         </Dropdown>
     );
 };

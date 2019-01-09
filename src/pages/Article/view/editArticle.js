@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { Card, Form, Input, TreeSelect, Button } from 'antd';
 import PageHeaderLayout from '@src/layouts/PageHeaderLayout';
-import { formatTreeData } from '@src/utils/utils';
-import { addArticle } from '../actions';
+import { formatTreeData, getPageQuery } from '@src/utils/utils';
+import { getArticleInfo, editArticle } from '../actions';
 import { actions as columnActions } from '@src/pages/Column';
 
 const FormItem = Form.Item;
@@ -13,22 +13,24 @@ const { TextArea } = Input;
 class AddArticle extends PureComponent {
     componentDidMount() {
         const { dispatch } = this.props;
+        const params = getPageQuery();
         const { getColumnList } = columnActions;
         dispatch(getColumnList());
+        dispatch(getArticleInfo(params));
     }
 
     handleSubmit = e => {
         e.preventDefault();
-        const { form, dispatch } = this.props;
+        const { form, dispatch, articleInfo } = this.props;
         form.validateFieldsAndScroll(async (err, values) => {
             if (!err) {
-                await dispatch(addArticle(values));
+                await dispatch(editArticle({ ...articleInfo, ...values }));
                 dispatch(push('/article/list'));
             }
         });
     };
     render() {
-        const { form, columnList } = this.props;
+        const { form, columnList, articleInfo } = this.props;
         const { getFieldDecorator } = form;
 
         const treeDateSource = formatTreeData(columnList);
@@ -54,11 +56,11 @@ class AddArticle extends PureComponent {
 
         return (
             <PageHeaderLayout>
-                <Card title="添加文章" bordered={false}>
+                <Card title="编辑文章" bordered={false}>
                     <Form onSubmit={this.handleSubmit} style={{ marginTop: 8 }}>
                         <FormItem {...formItemLayout} label="分类">
                             {getFieldDecorator('type_id', {
-                                initialValue: '0'
+                                initialValue: articleInfo.type_id || '0'
                             })(
                                 <TreeSelect
                                     allowClear={true}
@@ -71,6 +73,7 @@ class AddArticle extends PureComponent {
                         </FormItem>
                         <FormItem {...formItemLayout} label="标题">
                             {getFieldDecorator('title', {
+                                initialValue: articleInfo.title,
                                 rules: [
                                     {
                                         required: true,
@@ -81,6 +84,7 @@ class AddArticle extends PureComponent {
                         </FormItem>
                         <FormItem {...formItemLayout} label="简标题">
                             {getFieldDecorator('short_title', {
+                                initialValue: articleInfo.short_title,
                                 rules: [
                                     {
                                         required: true,
@@ -90,13 +94,13 @@ class AddArticle extends PureComponent {
                             })(<Input placeholder="简标题" />)}
                         </FormItem>
                         <FormItem {...formItemLayout} label="描述">
-                            {getFieldDecorator('description', {})(
+                            {getFieldDecorator('description', { initialValue: articleInfo.description })(
                                 <TextArea style={{ minHeight: 32 }} placeholder="描述" rows={4} />
                             )}
                         </FormItem>
                         <FormItem {...formItemLayout} label="排序">
                             {getFieldDecorator('order', {
-                                initialValue: 1,
+                                initialValue: articleInfo.order || 1,
                                 rules: [
                                     {
                                         required: true,
@@ -107,6 +111,7 @@ class AddArticle extends PureComponent {
                         </FormItem>
                         <FormItem {...formItemLayout} label="标签">
                             {getFieldDecorator('tag', {
+                                initialValue: articleInfo.tag,
                                 rules: [
                                     {
                                         required: true,
@@ -117,6 +122,7 @@ class AddArticle extends PureComponent {
                         </FormItem>
                         <FormItem {...formItemLayout} label="内容">
                             {getFieldDecorator('body', {
+                                initialValue: articleInfo.body,
                                 rules: [
                                     {
                                         required: true,

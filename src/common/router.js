@@ -93,6 +93,9 @@ export const getRouterData = () => {
         '/article/add': {
             component: dynamicWrapper(() => import('../pages/Article/view/addArticle'))
         },
+        '/article/edit': {
+            component: dynamicWrapper(() => import('../pages/Article/view/editArticle'))
+        },
         '/exception/403': {
             component: dynamicWrapper(() => import('../pages/Exception/403'))
         },

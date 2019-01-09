@@ -18,7 +18,18 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-// temp fix for https://github.com/ant-design/ant-design/commit/a1fafb5b727b62cb0be29ce6e9eca8f579d4f8b7
+.link-btn {
+    color: #1890ff;
+    background-color: transparent;
+    border: none;
+    box-shadow: inherit;
+    cursor: pointer;
+    &:hover {
+        color: #40a9ff;
+        background-color: transparent;
+    }
+}
+
 :global {
     .ant-spin-container {
         overflow: visible !important;

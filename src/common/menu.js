@@ -36,7 +36,12 @@ const menuData = [
                 name: '添加文章',
                 path: 'add',
                 hideInMenu: true
-            }
+            },
+            {
+              name: '编辑文章',
+              path: 'edit',
+              hideInMenu: true
+          }
         ]
     }
 ];

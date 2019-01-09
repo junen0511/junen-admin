@@ -74,12 +74,12 @@ class ColumnList extends PureComponent {
                 dataIndex: 'action',
                 render: (text, record) => (
                     <span>
-                        <a href="#/" onClick={e => this.handleEditColumn(record, e)}>
+                        <span className="link-btn" onClick={e => this.handleEditColumn(record, e)}>
                             编辑
-                        </a>
+                        </span>
                         <Divider type="vertical" />
                         <Popconfirm title="确认删除该栏目？" onConfirm={e => this.handleDelColumn(record.id, e)}>
-                            <a href="#/">删除</a>
+                            <span className="link-btn">删除</span>
                         </Popconfirm>
                     </span>
                 )

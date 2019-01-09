@@ -27,7 +27,7 @@ class ArticleList extends PureComponent {
     state = {
         typeId: 0,
         current: 1,
-        pageSize: 2
+        pageSize: 10
     };
     componentDidMount() {
         this.filterArticleList();

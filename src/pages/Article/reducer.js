@@ -1,9 +1,9 @@
-import { GET_ARTICLE_LIST, EDIT_INITIAL_ARTICLE, DEL_ARTICLE } from './actionTypes';
+import { GET_ARTICLE_LIST, GET_ARTICLE_INFO, DEL_ARTICLE } from './actionTypes';
 
 const initialState = {
     articleList: [],
     total: 0,
-    currentItem: {}
+    articleInfo: {}
 };
 
 export default (state = initialState, action) => {
@@ -12,8 +12,8 @@ export default (state = initialState, action) => {
         case GET_ARTICLE_LIST:
             const { list: articleList, total } = payload;
             return { ...state, articleList, total };
-        case EDIT_INITIAL_ARTICLE:
-            return { ...state, currentItem: payload };
+        case GET_ARTICLE_INFO:
+            return { ...state, articleInfo: payload };
         case DEL_ARTICLE:
             return { ...state, articleList: state.articleList.filter(({ id }) => id !== payload.id) };
         default:
