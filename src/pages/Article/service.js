@@ -2,7 +2,7 @@ import request from '@src/utils/request';
 
 export async function fetchArticleList(data) {
     const response = await request({
-        url: '/article/getList',
+        url: '/article/list',
         method: 'post',
         data
     });
@@ -12,7 +12,7 @@ export async function fetchArticleList(data) {
 
 export async function fetchArticleInfo(params) {
     const response = await request({
-        url: '/article/getOneInfo',
+        url: '/article/info',
         method: 'get',
         params
     });

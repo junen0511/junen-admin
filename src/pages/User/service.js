@@ -2,7 +2,7 @@ import request from '@src/utils/request';
 
 export async function signInApi(data) {
     const response = await request({
-        url: '/user/signIn',
+        url: '/auth/signIn',
         method: 'post',
         data
     });
@@ -12,7 +12,7 @@ export async function signInApi(data) {
 
 export async function signUpApi(data) {
     const response = await request({
-        url: '/user/signUp',
+        url: '/auth/signUp',
         method: 'post',
         data
     });

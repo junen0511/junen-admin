@@ -2,7 +2,7 @@ import request from '@src/utils/request';
 
 export async function fetchColumnList() {
     const response = await request({
-        url: '/column/getAllList',
+        url: '/column/list',
         method: 'get'
     });
 
@@ -11,7 +11,7 @@ export async function fetchColumnList() {
 
 export async function fetchColumnInfo(params) {
     const response = await request({
-        url: '/column/getOneInfo',
+        url: '/column/info',
         method: 'get',
         params
     });
