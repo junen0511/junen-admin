@@ -3,7 +3,7 @@ import { Layout, Menu, Icon } from 'antd';
 import pathToRegexp from 'path-to-regexp';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import styles from './index.module.less';
+import styles from './index.less';
 import { urlToList } from '../_utils/pathTools';
 
 const { Sider } = Layout;

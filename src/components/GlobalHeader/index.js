@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Menu, Icon, Dropdown, Avatar } from 'antd';
 import Debounce from 'lodash-decorators/debounce';
-import styles from './index.module.less';
+import styles from './index.less';
 
 export default class GlobalHeader extends PureComponent {
     componentWillUnmount() {

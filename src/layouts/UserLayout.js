@@ -3,7 +3,7 @@ import { Link, Redirect, Switch, Route } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
 import { Icon } from 'antd';
 import GlobalFooter from 'components/GlobalFooter';
-import styles from './UserLayout.module.less';
+import styles from './UserLayout.less';
 import logo from '@src/assets/logo.svg';
 import { getRoutes, getPageQuery, getQueryPath } from '@src/utils/utils';
 

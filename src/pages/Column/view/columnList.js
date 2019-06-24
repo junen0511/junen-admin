@@ -6,7 +6,7 @@ import { getColumnList, addColumn, editInitialColumn, editColumn, delColumn } fr
 import PageHeaderLayout from '@src/layouts/PageHeaderLayout';
 import AddModalForm from './AddModalForm';
 import EditModalForm from './EditModalForm';
-import styles from './columnList.module.less';
+import styles from './columnList.less';
 
 class ColumnList extends PureComponent {
     componentDidMount() {

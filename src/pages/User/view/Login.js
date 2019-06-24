@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Checkbox, Alert, Icon } from 'antd';
 import { login } from '../actions';
 import Login from 'components/Login';
-import styles from './Login.module.less';
+import styles from './Login.less';
 
 const { UserName, Password, Submit } = Login;
 

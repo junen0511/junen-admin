@@ -5,7 +5,7 @@ import { push } from 'react-router-redux';
 import { List, Card, Button, Avatar, Modal } from 'antd';
 import MoreDropdown from 'components/MoreDropdown';
 import PageHeaderLayout from '@src/layouts/PageHeaderLayout';
-import styles from './articleList.module.less';
+import styles from './articleList.less';
 import { getArticleList, delArticle } from '../actions';
 
 const confirm = Modal.confirm;

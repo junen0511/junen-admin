@@ -2,7 +2,7 @@ import React, { createElement } from 'react';
 import classNames from 'classnames';
 import { Button } from 'antd';
 import config from './typeConfig';
-import styles from './index.module.less';
+import styles from './index.less';
 
 const Exception = ({ className, linkElement = 'a', type, title, desc, img, actions, ...rest }) => {
     const pageType = type in config ? type : 404;

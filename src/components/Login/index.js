@@ -4,7 +4,7 @@ import { Form } from 'antd';
 import classNames from 'classnames';
 import LoginItem from './LoginItem';
 import LoginSubmit from './LoginSubmit';
-import styles from './index.module.less';
+import styles from './index.less';
 
 class Login extends Component {
     static propTypes = {

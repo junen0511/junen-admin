@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Button, Form } from 'antd';
-import styles from './index.module.less';
+import styles from './index.less';
 
 const FormItem = Form.Item;
 
